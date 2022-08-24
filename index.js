@@ -20,8 +20,8 @@ io.on('createUser', (key) => {
     }
 });
 
-io.on('updateUser', (oldKey, newKey) => {
-    const result = shell.exec(`bash ./user_management/update.sh ${oldKey} ${' '} ${newKey}`, {async: true});
+io.on('updateUser', (data) => {
+    const result = shell.exec(`bash ./user_management/update.sh ${data.oldKey} ${' '} ${data.newKey}`, {async: true});
 
     if(result.stderr === ''){
         io.emit('updateUser', result);
